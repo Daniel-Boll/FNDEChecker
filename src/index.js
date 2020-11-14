@@ -9,7 +9,7 @@ const app = express();
 
 console.log("Working");
 
-schedule.scheduleJob("30 * * * * *", () => {
+schedule.scheduleJob("10 * * * *", () => {
   requestFromAPI.getInfo();
 });
 
