@@ -7,11 +7,9 @@ const env = require("dotenv").config().parsed;
 
 const app = express();
 
-console.log("Working");
+console.log("Trying request");
 
-schedule.scheduleJob("10 * * * *", () => {
-  requestFromAPI.getInfo();
-});
+requestFromAPI.getInfo();
 
 // requestFromAPI.getInfo();
 
