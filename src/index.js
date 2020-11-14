@@ -1,6 +1,7 @@
 const express = require("express");
 
 const requestFromAPI = require("./getInfo");
+const mail = require("./sendMail");
 const schedule = require("node-schedule");
 const env = require("dotenv").config().parsed;
 
@@ -9,7 +10,12 @@ const app = express();
 console.log("Working");
 
 schedule.scheduleJob("30 * * * * *", () => {
-  requestFromAPI.getInfo();
+  // requestFromAPI.getInfo();
+  mail.sendMail(
+    (subject = "Bolsa provavelmente caiu!"),
+    (text =
+      "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. ")
+  );
 });
 
 // requestFromAPI.getInfo();
