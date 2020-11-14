@@ -10,11 +10,7 @@ const app = express();
 console.log("Working");
 
 schedule.scheduleJob("30 * * * * *", () => {
-  // requestFromAPI.getInfo();
-  mail.sendMail(
-    "Bolsa provavelmente caiu!",
-    "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. "
-  );
+  requestFromAPI.getInfo();
 });
 
 // requestFromAPI.getInfo();
