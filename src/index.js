@@ -12,9 +12,8 @@ console.log("Working");
 schedule.scheduleJob("30 * * * * *", () => {
   // requestFromAPI.getInfo();
   mail.sendMail(
-    (subject = "Bolsa provavelmente caiu!"),
-    (text =
-      "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. ")
+    "Bolsa provavelmente caiu!",
+    "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. "
   );
 });
 
