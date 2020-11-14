@@ -8,15 +8,15 @@ module.exports.sendMail = (subject, text) => {
       service: "gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: env.GMAIL_USER,
-        pass: env.GMAIL_PASSWORD,
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
       },
     })
   );
 
   const mailOptions = {
-    from: env.GMAIL_SENDER,
-    to: env.GMAIL_LIST,
+    from: process.env.GMAIL_SENDER,
+    to: process.env.GMAIL_LIST,
     subject: subject,
     text: text,
   };

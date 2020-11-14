@@ -6,7 +6,7 @@ const env = require("dotenv").config().parsed;
 const mail = require("./sendMail.js");
 
 module.exports.getInfo = () => {
-  const cpf = env.CPF;
+  const cpf = process.env.CPF;
   const cpf_url = `https://www.fnde.gov.br/digef/rs/spba/publica/pessoa/1/10/${cpf}`;
   console.log("Fuck");
   axios.get(cpf_url).then((response) => {
