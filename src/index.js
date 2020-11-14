@@ -1,4 +1,23 @@
+const express = require("express");
+
 const requestFromAPI = require("./getInfo");
 const schedule = require("node-schedule");
+const env = require("dotenv").config().parsed;
 
-schedule.scheduleJob({ hour: 21, minute: 05 }, () => requestFromAPI.getInfo());
+const app = express();
+
+schedule.scheduleJob("30 * * * * *", () => {
+  requestFromAPI.getInfo();
+});
+
+// requestFromAPI.getInfo();
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "FNDE Checker working!",
+  });
+});
+
+app.listen(env.PORT || 3000, () => {
+  console.log("Listening to port 3000");
+});
