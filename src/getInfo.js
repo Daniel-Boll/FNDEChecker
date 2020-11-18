@@ -33,7 +33,9 @@ module.exports.getInfo = () => {
           );
           const data = JSON.parse(rawData);
 
-          console.log(`${data.paymentsSize} x ${info.paymentsSize}`);
+          console.log(
+            `Current: ${data.paymentsSize} x API: ${info.paymentsSize}`
+          );
 
           if (data.paymentsSize != info.paymentsSize) {
             fs.writeFile(
