@@ -7,11 +7,7 @@ const env = require("dotenv").config().parsed;
 
 const app = express();
 
-console.log("Trying request");
-
 requestFromAPI.getInfo();
-
-// requestFromAPI.getInfo();
 
 app.get("/", (req, res) => {
   res.status(200).json({

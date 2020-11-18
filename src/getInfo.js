@@ -12,11 +12,13 @@ module.exports.getInfo = () => {
   axios
     .get(cpf_url)
     .then((response) => {
-      console.log("Reaching here");
+      console.log("------------------------------");
+      console.log("CPF request successful");
       const currentHash = `https://www.fnde.gov.br/digef/rs/spba/publica/pagamento/${response.data.pessoas[0].hash}`;
       axios
         .get(currentHash)
         .then((response) => {
+          console.log("Hash request successful");
           // Variables from API
           const payments =
             response.data.programas[0].entidades[78680337000184].funcoes[49]
@@ -45,7 +47,10 @@ module.exports.getInfo = () => {
               (text =
                 "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. ")
             );
+          } else {
+            console.log("Payment size remains the same!");
           }
+          console.log("------------------------------");
         })
         .catch((err) => console.log("Error on HASH_URL"));
     })
