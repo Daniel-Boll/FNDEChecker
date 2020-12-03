@@ -34,9 +34,8 @@ module.exports.getInfo = () => {
             console.log(await getFromDP.readData());
             console.log("Mandando e-mail");
             mail.sendMail(
-              (subject = "Bolsa provavelmente caiu!"),
-              (text =
-                "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. ")
+              "Bolsa provavelmente caiu!",
+              "A API notou uma alteração nos dados, há a chance de a bolsa ter caído. "
             );
           } else {
             console.log("Payment size remains the same!");
