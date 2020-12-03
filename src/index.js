@@ -3,9 +3,6 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 const requestFromAPI = require("./getInfo");
-const mail = require("./sendMail");
-const schedule = require("node-schedule");
-const env = require("dotenv").config().parsed;
 
 const app = express();
 
