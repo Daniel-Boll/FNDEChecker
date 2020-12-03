@@ -30,7 +30,7 @@ module.exports.getInfo = () => {
           console.log(`Current: ${data} x API: ${info.paymentsSize}`);
 
           if (data != info.paymentsSize) {
-            getFromDP.insertData(info.paymentsSize);
+            await getFromDP.insertData(info.paymentsSize);
             console.log("Mandando e-mail");
             mail.sendMail(
               (subject = "Bolsa provavelmente caiu!"),

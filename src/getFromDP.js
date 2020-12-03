@@ -1,15 +1,15 @@
 const puppeteer = require("puppeteer");
 const url = "http://dontpad.com/18237ajjk1237e";
 
-module.exports.insertData = (newInfo) => {
+module.exports.insertData = async function insertData(newInfo) {
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox"],
   });
   const page = await browser.newPage();
   await page.goto(url);
-  await page.type('#text', `${newInfo}|`)
-  browser.close()
+  await page.type("#text", `${newInfo}|`);
+  browser.close();
 };
 
 module.exports.readData = async function readData() {
@@ -17,6 +17,7 @@ module.exports.readData = async function readData() {
     headless: true,
     args: ["--no-sandbox"],
   });
+  gi;
   const page = await browser.newPage();
   await page.goto(url);
 
