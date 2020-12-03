@@ -1,8 +1,7 @@
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const env = require("dotenv").config().parsed;
 
-module.exports.sendMail = (subject, text) => {
+module.exports.sendMail = async function sendMail(subject, text) {
   const transporter = nodemailer.createTransport(
     smtpTransport({
       service: "gmail",
