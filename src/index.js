@@ -1,4 +1,6 @@
 const express = require("express");
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 const requestFromAPI = require("./getInfo");
 const mail = require("./sendMail");

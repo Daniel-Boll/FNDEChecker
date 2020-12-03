@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rmdir /S build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
     "build": "yarn clean && yarn build-babel",
     "start": "yarn build && node ./build/index.js"
@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "babel-preset-env": "^1.7.0",
+    "core-js": "^3.8.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
@@ -20,7 +21,8 @@
     "nodemailer": "^6.4.16",
     "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7",
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^5.5.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0"
