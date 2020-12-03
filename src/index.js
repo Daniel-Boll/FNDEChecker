@@ -4,8 +4,6 @@ const getInfo = require("./getInfo");
 require("core-js/stable");
 require("regenerator-runtime/runtime");
 
-// just to comment
-
 const app = express();
 
 getInfo.getInfo();
