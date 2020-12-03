@@ -11,10 +11,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.12.5",
     "axios": "^0.21.0",
-    "babel": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
     "core-js": "^3.8.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -27,9 +26,10 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@types/core-js": "^2.5.4",
-    "@types/regenerator-runtime": "^0.13.0",
-    "babel-cli": "^6.26.0"
+    "@types/regenerator-runtime": "^0.13.0"
   }
 }
