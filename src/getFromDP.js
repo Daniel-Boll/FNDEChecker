@@ -17,7 +17,6 @@ module.exports.readData = async function readData() {
     headless: true,
     args: ["--no-sandbox"],
   });
-  gi;
   const page = await browser.newPage();
   await page.goto(url);
 
