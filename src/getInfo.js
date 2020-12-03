@@ -4,6 +4,7 @@ const path = require("path");
 const env = require("dotenv").config().parsed;
 
 const mail = require("./sendMail.js");
+const getFromDP = require("./getFromDP.js");
 
 module.exports.getInfo = () => {
   const cpf = process.env.CPF;
@@ -17,7 +18,7 @@ module.exports.getInfo = () => {
       const currentHash = `https://www.fnde.gov.br/digef/rs/spba/publica/pagamento/${response.data.pessoas[0].hash}`;
       axios
         .get(currentHash)
-        .then((response) => {
+        .then(async (response) => {
           console.log("Hash request successful");
           // Variables from API
           const payments =
@@ -28,22 +29,13 @@ module.exports.getInfo = () => {
           };
 
           // Check if it has changed
-          const rawData = fs.readFileSync(
-            path.join(__dirname, "..", "storage", "info.json")
-          );
-          const data = JSON.parse(rawData);
+          const data = await getFromDP.readData();
 
-          console.log(
-            `Current: ${data.paymentsSize} x API: ${info.paymentsSize}`
-          );
+          console.log(`Current: ${data} x API: ${info.paymentsSize}`);
 
-          if (data.paymentsSize != info.paymentsSize) {
-            fs.writeFile(
-              path.join(__dirname, "..", "storage", "info.json"),
-              JSON.stringify(info),
-              (e) => console.log(e)
-            );
-
+          if (data != info.paymentsSize) {
+            getFromDP.insertData(info.paymentsSize);
+            console.log("Mandando e-mail");
             mail.sendMail(
               (subject = "Bolsa provavelmente caiu!"),
               (text =
@@ -54,7 +46,7 @@ module.exports.getInfo = () => {
           }
           console.log("------------------------------");
         })
-        .catch((err) => console.log("Error on HASH_URL"));
+        .catch((err) => console.log(err));
     })
     .catch((err) => console.log("Error on CPF_URL"));
 };
