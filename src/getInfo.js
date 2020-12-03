@@ -1,8 +1,4 @@
 const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
-const env = require("dotenv").config().parsed;
-
 const mail = require("./sendMail.js");
 const getFromDP = require("./getFromDP.js");
 

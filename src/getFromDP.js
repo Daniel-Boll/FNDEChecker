@@ -1,15 +1,15 @@
-const Nightmare = require("nightmare");
 const puppeteer = require("puppeteer");
 const url = "http://dontpad.com/18237ajjk1237e";
 
 module.exports.insertData = (newInfo) => {
-  new Nightmare()
-    .goto(url)
-    .type("#text", `${newInfo}|`)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => console.log(error));
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
+  const page = await browser.newPage();
+  await page.goto(url);
+  await page.type('#text', `${newInfo}|`)
+  browser.close()
 };
 
 module.exports.readData = async function readData() {
