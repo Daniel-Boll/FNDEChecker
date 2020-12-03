@@ -1,14 +1,14 @@
 const express = require("express");
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+const getInfo = require("./getInfo");
 
-const requestFromAPI = require("./getInfo");
+require("core-js/stable");
+require("regenerator-runtime/runtime");
 
 const app = express();
 
-requestFromAPI.getInfo();
+getInfo.getInfo();
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.status(200).json({
     message: "FNDE Checker working!",
   });

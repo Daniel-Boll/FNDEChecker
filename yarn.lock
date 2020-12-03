@@ -2,10 +2,20 @@
 # yarn lockfile v1
 
 
+"@types/core-js@^2.5.4":
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-2.5.4.tgz#fc42ebde7d9cfa7c5f2668f117449b02348e41fd"
+  integrity sha512-Xwy8o12ak+iYgFr/KCVaVK5Sy+jFMiiPAID3+ObvMlBzy26XQJw5xu+a6rlHsrJENXj/AwJOGsJpVohUjAzSKQ==
+
 "@types/node@*":
   version "14.14.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
   integrity sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==
+
+"@types/regenerator-runtime@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@types/regenerator-runtime/-/regenerator-runtime-0.13.0.tgz#8b81e6047da0fbb71927c23d749e2a9edf9aad9b"
+  integrity sha512-U5osy6qZU3lOPGQRHGDIAt/hC/jAE7zP4Aq258UMXnF8/htmZ+72ALrSsmWTtqML7lCztKkKaPz6Pb5XHJF0Vw==
 
 "@types/yauzl@^2.9.1":
   version "2.9.1"
