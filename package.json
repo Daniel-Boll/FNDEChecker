@@ -10,6 +10,7 @@
     "start": "yarn build && node ./build/index.js"
   },
   "dependencies": {
+    "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "axios": "^0.21.0",
     "babel-preset-env": "^1.7.0",
