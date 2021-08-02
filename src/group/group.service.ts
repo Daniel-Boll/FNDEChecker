@@ -20,8 +20,12 @@ export class GroupService {
     return this.groupModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} group`;
+  async findOne(id: string): Promise<Group> {
+    return this.groupModel.findById(id).exec();
+  }
+
+  async find(match: { [type: string]: string }): Promise<Group> {
+    return this.groupModel.findOne(match).exec();
   }
 
   update(id: number, updateGroupDto: UpdateGroupDto) {

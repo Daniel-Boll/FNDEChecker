@@ -4,9 +4,12 @@ import { GroupModule } from "./group/group.module";
 import { ApplicationController } from "./application/application.controller";
 import { ApplicationService } from "./application/application.service";
 import { HttpModule } from "@nestjs/axios";
+import { AuthModule } from "./auth/auth.module";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(
       `mongodb+srv://FNDEChecker:${"wHz5XvVmsKxB9Vip"}@fndechecker.utuvw.mongodb.net/FNDEChecker?retryWrites=true&w=majority`,
       {
@@ -18,6 +21,7 @@ import { HttpModule } from "@nestjs/axios";
     ),
     GroupModule,
     HttpModule,
+    AuthModule,
   ],
   controllers: [ApplicationController],
   providers: [ApplicationService],

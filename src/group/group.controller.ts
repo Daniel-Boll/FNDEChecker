@@ -1,17 +1,18 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
+  Param,
+  Patch,
+  Post,
 } from "@nestjs/common";
-import { GroupService } from "./group.service";
+
 import { CreateGroupDto } from "./dto/create-group.dto";
 import { UpdateGroupDto } from "./dto/update-group.dto";
+import { GroupService } from "./group.service";
 
 @Controller("group")
 export class GroupController {
@@ -20,6 +21,8 @@ export class GroupController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createGroupDto: CreateGroupDto) {
+    // TODO: Add validation. Probably to the DTO.
+    // docs.nestjs.com/techniques/validation
     return await this.groupService.create(createGroupDto);
   }
 
@@ -29,8 +32,13 @@ export class GroupController {
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.groupService.findOne(+id);
+  async findOne(@Param("id") id: string) {
+    return await this.groupService.findOne(id);
+  }
+
+  @Get("byMail/:email")
+  async findByEmail(@Param("email") email: string) {
+    return await this.groupService.find({ email });
   }
 
   @Patch(":id")

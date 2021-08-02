@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+http POST :3000/auth/login \
+  email=danielboll.academico@gmail.com \
+  password=123 \
+  -v

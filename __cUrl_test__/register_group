@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+http POST :3000/group           \
+  email=danielboll.academico@gmail.com         \
+  password=123                  \
+  groupname=groupName           \
+  IES=groupIES                  \
+  UF=groupUF                    \
+  city=groupCity -v

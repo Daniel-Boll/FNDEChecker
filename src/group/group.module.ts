@@ -1,8 +1,14 @@
-import { Module } from "@nestjs/common";
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { GroupService } from "./group.service";
 import { GroupController } from "./group.controller";
 import { Group, GroupSchema } from "./schemas/group.schema";
+import { PasswordEncryptionMiddleware } from "src/password-encryption.middleware";
 
 @Module({
   imports: [
@@ -10,5 +16,12 @@ import { Group, GroupSchema } from "./schemas/group.schema";
   ],
   controllers: [GroupController],
   providers: [GroupService],
+  exports: [GroupService],
 })
-export class GroupModule {}
+export class GroupModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(PasswordEncryptionMiddleware)
+      .forRoutes({ path: "group", method: RequestMethod.POST });
+  }
+}
