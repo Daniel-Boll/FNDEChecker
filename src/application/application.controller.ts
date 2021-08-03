@@ -5,6 +5,7 @@ import {
   UseGuards,
   Request,
   Get,
+  Header,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { AuthService } from "src/auth/auth.service";
@@ -30,10 +31,12 @@ export class ApplicationController {
   }
 
   @Get("auth/oauth")
+  @Header("Access-Control-Allow-Origin", "*")
   @UseGuards(AuthGuard("google"))
   async googleAuth(@Request() req: any) {}
 
   @Get("auth/oauth/redirect")
+  @Header("Access-Control-Allow-Origin", "*")
   @UseGuards(AuthGuard("google"))
   googleAuthRedirect(@Request() req: any) {
     return this.authService.googleLogin(req);

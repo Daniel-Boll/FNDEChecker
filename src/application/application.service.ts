@@ -1,5 +1,5 @@
 import { HttpService } from "@nestjs/axios";
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { AxiosResponse } from "axios";
 import { AppSearchDto } from "./dto/app-search.dto";
 
@@ -26,6 +26,16 @@ export class ApplicationService {
     } = await this.httpService
       .get(cpfURL)
       .toPromise<AxiosResponse<CPFURLPayload>>();
+
+    if(!usuario) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: "CPF não encontrado",
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    };
 
     const { hash } = usuario;
 
