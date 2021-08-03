@@ -33,6 +33,6 @@ async function bootstrap() {
     origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   });
-  await app.listen(8000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
